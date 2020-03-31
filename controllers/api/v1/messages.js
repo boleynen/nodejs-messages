@@ -66,12 +66,12 @@ const postAll =  (req, res) => {
 
 // PUT:     /api/v1/messages/:id - kan een JSON-object ontvangen en een specifiek bericht updaten en geeft die nieuwe bericht terug
 const update = (req, res) => {
-    let update = "updated message"
+    let update = "UPDATED message"
     Message.findByIdAndUpdate({_id: req.params.id}, {text: update}, (err, docs) => {
         if(!err) {
             res.json({
                 "status": "success",
-                "message": update
+                "message": update + "with ID " + req.params.id
             })
         }else if(err){
             res.json({
